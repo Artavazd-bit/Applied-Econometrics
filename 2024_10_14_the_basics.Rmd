@@ -23,11 +23,22 @@ Erstelle Übericht der einzelnen Spalten im Datensatz.Berechnung von Momenten.
 ```{r}
 Hmisc::describe(data)
 ```
+Verteilungen der Merkmale.
+```{r}
+plot(density(data$person_age))
+plot(density(data$person_income))
+```
 
-Einfachregression und t-Test
+Einfachregression und t-Test.
 ```{r}
 my_first_linear_model <- lm(person_income ~ person_age, data = data)
 summary(my_first_linear_model)
+```
+
+Mehrfachregression.
+```{r}
+my_second_linear_model <- glm(loan_status ~ ., data = data, family = binomial())
+summary(my_second_linear_model)
 ```
 
 
