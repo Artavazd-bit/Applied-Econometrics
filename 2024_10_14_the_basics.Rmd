@@ -1,0 +1,33 @@
+---
+title: "Applied Econometrics - the basics"
+output: html_notebook
+---
+
+Pakete laden.
+```{r}
+library(dplyr)
+library(Hmisc)
+```
+
+Daten reinladen.
+```{r}
+data <- data <- read.csv("./Data/Beispiel_credit_risk_dataset_Tse_2019.csv")
+```
+
+Ersten Eindruck der Daten erhalten.
+```{r}
+head(data)
+```
+
+Erstelle Übericht der einzelnen Spalten im Datensatz.Berechnung von Momenten. 
+```{r}
+Hmisc::describe(data)
+```
+
+Einfachregression und t-Test
+```{r}
+my_first_linear_model <- lm(person_income ~ person_age, data = data)
+summary(my_first_linear_model)
+```
+
+
