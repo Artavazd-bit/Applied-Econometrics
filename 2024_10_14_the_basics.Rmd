@@ -7,11 +7,12 @@ Pakete laden.
 ```{r}
 library(dplyr)
 library(Hmisc)
+library(ISLR2)
 ```
 
 Daten reinladen.
 ```{r}
-data <- data <- read.csv("./Data/Beispiel_credit_risk_dataset_Tse_2019.csv")
+data <- ISLR2::Auto
 ```
 
 Ersten Eindruck der Daten erhalten.
@@ -25,19 +26,19 @@ Hmisc::describe(data)
 ```
 Verteilungen der Merkmale.
 ```{r}
-plot(density(data$person_age))
-plot(density(data$person_income))
+plot(density(data$horsepower))
+plot(density(data$mpg))
 ```
 
 Einfachregression und t-Test.
 ```{r}
-my_first_linear_model <- lm(person_income ~ person_age, data = data)
+my_first_linear_model <- lm(mpg ~ horsepower, data = data)
 summary(my_first_linear_model)
 ```
 
 Mehrfachregression.
 ```{r}
-my_second_linear_model <- glm(loan_status ~ ., data = data, family = binomial())
+my_second_linear_model <- glm(mpg ~ ., data = data)
 summary(my_second_linear_model)
 ```
 
